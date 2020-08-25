@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { PoButtonGroupItem } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-hero-detail',
@@ -13,10 +14,15 @@ import { HeroService } from '../hero.service';
 export class HeroDetailComponent implements OnInit {
   hero: Hero;
 
+  buttons: Array<PoButtonGroupItem> = [
+    { action: this.goBack, label: 'Voltar'},
+    { action: this.save, label: 'Salvar'}
+  ];
+
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private location: Location
+    private location: Location,
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +35,7 @@ export class HeroDetailComponent implements OnInit {
       .subscribe(hero => this.hero = hero);
   }
 
-  goBack(): void {
+  goBack(){
     this.location.back();
   }
 

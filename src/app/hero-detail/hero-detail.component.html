@@ -1,13 +1,18 @@
-<div *ngIf="hero">
-  <po-page-default>
-    <h2>{{hero.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{hero.id}}</div>
-    <div>
-      <label>name:
-        <input [(ngModel)]="hero.name" placeholder="name" />
-      </label>
-    </div>
-    <button (click)="goBack()">go back</button>
-    <button (click)="save()">save</button>
-  </po-page-default>
-</div>
+<po-page-default *ngIf="hero">
+
+  <po-toolbar p-title="{{hero.name | uppercase}} Detalhes"></po-toolbar>
+
+  <div class="po-md-12">
+    <h3> ID: {{hero.id}} </h3>
+    <h3>Nome:</h3>
+    <po-input class="po-md-4" [(ngModel)]="hero.name" p-placeholder="nome"></po-input>
+  </div>
+  
+  <div class="po-md-12">
+    <po-button-group class="po-md-8" [p-buttons]="buttons">
+    </po-button-group>
+  </div>
+  <!-- <po-button (click)="goBack()" p-label="Voltar"></po-button>
+  <po-button (click)="save()" p-label="Salvar"></po-button> -->
+
+</po-page-default>

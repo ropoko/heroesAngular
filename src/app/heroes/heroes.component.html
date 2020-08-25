@@ -1,22 +1,25 @@
 <po-page-default>
-  <h2>My Heroes</h2>
+  <h2>Heróis</h2>
 
   <div>
-    <label>Hero name:
-      <input #heroName />
+    <label>Nome:
+      <po-input #heroName></po-input>
     </label>
     <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(heroName.value); heroName.value=''">
-      add
-    </button>
+    <po-button (click)="add(heroName.getScreenValue()); heroName.value=''" p-label="Adicionar">
+    </po-button>
   </div>
 
-  <ul class="heroes">
+  <po-page-dynamic-table [p-fields]="menu">
+
+  </po-page-dynamic-table>
+
+  <!-- <ul class="heroes">
     <li *ngFor="let hero of heroes">
       <a routerLink="/detail/{{hero.id}}">
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </a>
-      <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+      <po-button p-label="x" class="delete" title="delete hero" (click)="delete(hero)"></po-button>
     </li>
-  </ul>
+  </ul> -->
 </po-page-default>

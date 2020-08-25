@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { PoDynamicViewField } from '@po-ui/ng-components';
+
 
 @Component({
   selector: 'app-heroes',
@@ -10,6 +12,11 @@ import { HeroService } from '../hero.service';
 })
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
+
+  menu: Array<PoDynamicViewField> = [
+    { property: 'Nome', gridLgColumns:4, gridSmColumns:12, gridMdColumns:6 },
+    { property: 'Id', gridLgColumns:4, gridSmColumns:12, gridMdColumns:6 }
+  ];
 
   constructor(private heroService: HeroService) { }
 

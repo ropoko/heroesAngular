@@ -15,6 +15,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { MessagesComponent } from './messages/messages.component';
 import { PoModule } from '@po-ui/ng-components';
+import { PoPageDynamicTableModule } from '@po-ui/ng-templates';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { PoModule } from '@po-ui/ng-components';
       InMemoryDataService, { dataEncapsulation: false }
     ),
 
-    PoModule
+    PoModule,
+    PoPageDynamicTableModule
   ],
   declarations: [
     AppComponent,
