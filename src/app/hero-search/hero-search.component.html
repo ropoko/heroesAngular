@@ -1,13 +1,16 @@
-<po-page-default id="search-component">
-    <h4><label for="search-box">Hero Search</label></h4>
-
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
-
-    <ul class="search-result">
-        <li *ngFor="let hero of heroes$ | async">
-            <a routerLink="/detail/{{hero.id}}">
-                {{hero.name}}
-            </a>
-        </li>
-    </ul>
-</po-page-default>
+<hr />
+<po-page-list class="po-md-11">
+    <div class="po-row">
+        <h4> <label for="search-box">Pesquisar heróis:</label> </h4>
+        <po-input #searchBox class="po-md-6" (input)="search(searchBox.getScreenValue())"></po-input>
+    </div>
+    <po-list-view class="search-result po-offset-lg-3 po-offset-md-3 po-md-6 po-lg-6" *ngFor="let hero of heroes$ | async"
+    [p-items]=" [{ title:hero.name, name: hero.name, label: hero.name, routerLink:'/detail/hero.id' }]">
+        <ng-template p-list-view-content-template let-item>
+            <div class="po-row">
+                <po-button class="po-md-3" routerLink="/detail/{{hero.id}}" p-type="primary" p-label="{{item.name}}">
+                </po-button>
+            </div>
+        </ng-template>
+    </po-list-view>
+</po-page-list>

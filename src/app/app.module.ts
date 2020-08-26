@@ -14,13 +14,14 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { MessagesComponent } from './messages/messages.component';
-import { PoModule } from '@po-ui/ng-components';
-import { PoPageDynamicTableModule } from '@po-ui/ng-templates';
+import { PoModule, PoListViewModule  } from '@po-ui/ng-components';
+import { PoPageDynamicTableModule, PoPageDynamicSearchModule } from '@po-ui/ng-templates';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    PoListViewModule,
     AppRoutingModule,
     HttpClientModule,
 
@@ -32,7 +33,8 @@ import { PoPageDynamicTableModule } from '@po-ui/ng-templates';
     ),
 
     PoModule,
-    PoPageDynamicTableModule
+    PoPageDynamicTableModule,
+    PoPageDynamicSearchModule
   ],
   declarations: [
     AppComponent,

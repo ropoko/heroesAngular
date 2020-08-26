@@ -14,22 +14,22 @@ import { PoButtonGroupItem } from '@po-ui/ng-components';
 export class HeroDetailComponent implements OnInit {
   hero: Hero;
 
-  buttons: Array<PoButtonGroupItem> = [
-    { action: this.goBack, label: 'Voltar'},
-    { action: this.save, label: 'Salvar'}
-  ];
-
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location,
   ) {}
 
+  buttons: Array<PoButtonGroupItem> = [
+    { action: this.goBack.bind(this), label: 'Voltar' },
+    { action: this.save.bind(this), label: 'Salvar' }
+  ];
+
   ngOnInit(): void {
     this.getHero();
   }
 
-  getHero(): void {
+  getHero() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
@@ -39,7 +39,7 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
-  save(): void {
+  save() {
     this.heroService.updateHero(this.hero)
       .subscribe(() => this.goBack());
   }
