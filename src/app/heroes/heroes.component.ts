@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
-import { PoDynamicViewField } from '@po-ui/ng-components';
-
+import { PoTableAction } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-heroes',
@@ -13,12 +12,14 @@ import { PoDynamicViewField } from '@po-ui/ng-components';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
 
-  menu: Array<PoDynamicViewField> = [
-    { property: 'Nome', gridLgColumns:4, gridSmColumns:12, gridMdColumns:6 },
-    { property: 'Id', gridLgColumns:4, gridSmColumns:12, gridMdColumns:6 }
-  ];
+  heroID: number;
 
   constructor(private heroService: HeroService) { }
+
+  actions: Array<PoTableAction> = [
+    { action: this.delete.bind(this), icon: 'po-icon po-icon-delete', label: 'Excluir'},
+    { url: '/detail/', icon: 'po-icon po-icon-edit', label: 'Editar'}
+  ];
 
   ngOnInit() {
     this.getHeroes();
@@ -26,7 +27,7 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-    .subscribe(heroes => this.heroes = heroes);
+      .subscribe(heroes => this.heroes = heroes);
   }
 
   add(name: string): void {
@@ -42,5 +43,4 @@ export class HeroesComponent implements OnInit {
     this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero).subscribe();
   }
-
 }

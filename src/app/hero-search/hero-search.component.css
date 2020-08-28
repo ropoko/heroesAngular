@@ -2,3 +2,16 @@ po-page-list .po-row {
     justify-content: center;
     align-items: center;
 }
+
+#searchBox {
+    padding: 3px;
+    border-radius: 3%;
+    border: 1px solid black;
+    margin-left: 10px;
+}
+
+#searchBox:hover {
+    padding: 3px;
+    border-radius: 3%;
+    border: 1px solid purple;
+}
