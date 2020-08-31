@@ -42,7 +42,7 @@ import { PoPageDynamicTableModule, PoPageDynamicSearchModule } from '@po-ui/ng-t
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
   ],
   bootstrap: [ AppComponent ]
 })

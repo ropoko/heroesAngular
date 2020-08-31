@@ -1,0 +1,4 @@
+<Directory "/usr/local/apache2/htdocs">
+   ...
+   FallbackResource /myproject/index.html
+</Directory>

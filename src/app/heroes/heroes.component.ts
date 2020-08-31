@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { PoTableAction } from '@po-ui/ng-components';
@@ -11,14 +11,14 @@ import { PoTableAction } from '@po-ui/ng-components';
 })
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
-
+  idHero: string;
   heroID: number;
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService, private rota: Router) { }
 
   actions: Array<PoTableAction> = [
     { action: this.delete.bind(this), icon: 'po-icon po-icon-delete', label: 'Excluir'},
-    { url: '/detail/', icon: 'po-icon po-icon-edit', label: 'Editar'}
+    { action: this.details.bind(this), icon: 'po-icon po-icon-edit', label: 'Editar'}
   ];
 
   ngOnInit() {
@@ -42,5 +42,12 @@ export class HeroesComponent implements OnInit {
   delete(hero: Hero): void {
     this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero).subscribe();
+  }
+
+  details(hero: Hero): void {
+    var b = `${hero.id}`
+    var a = this.rota.navigateByUrl('/detail/' + b)
+    console.log('url: ' + a)
+    console.log('id= ' + b)
   }
 }
