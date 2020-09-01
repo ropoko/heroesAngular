@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
-import { PoButtonGroupItem } from '@po-ui/ng-components';
+import { PoButtonGroupItem, PoModalComponent } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-hero-detail',
@@ -13,6 +13,7 @@ import { PoButtonGroupItem } from '@po-ui/ng-components';
 })
 export class HeroDetailComponent implements OnInit {
   hero: Hero;
+  oldName: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,20 +28,30 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHero();
+    console.log(this.oldName);
   }
 
   getHero() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id)
+    var a = this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
+
+    console.log(this.oldName = a);
   }
 
   goBack(){
     this.location.back();
   }
 
+  @ViewChild('modal', { static: false }) poModal: PoModalComponent;
+
   save() {
+    this.poModal.setClickOut = true;
+    this.poModal.hideClose = true;
+    this.poModal.title = 'As alterações foram salvas!';
+    this.poModal.size = 'sm';
+
     this.heroService.updateHero(this.hero)
-      .subscribe(() => this.goBack());
+      .subscribe(() => this.poModal.open());
   }
 }

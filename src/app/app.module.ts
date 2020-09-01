@@ -14,7 +14,7 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { MessagesComponent } from './messages/messages.component';
-import { PoModule, PoListViewModule  } from '@po-ui/ng-components';
+import { PoModule, PoListViewModule, PoNotificationModule   } from '@po-ui/ng-components';
 import { PoPageDynamicTableModule, PoPageDynamicSearchModule } from '@po-ui/ng-templates';
 
 @NgModule({
@@ -34,7 +34,8 @@ import { PoPageDynamicTableModule, PoPageDynamicSearchModule } from '@po-ui/ng-t
 
     PoModule,
     PoPageDynamicTableModule,
-    PoPageDynamicSearchModule
+    PoPageDynamicSearchModule,
+    PoNotificationModule
   ],
   declarations: [
     AppComponent,

@@ -1,15 +1,29 @@
 <po-page-default *ngIf="hero">
-
-  <po-toolbar p-title="{{hero.name | uppercase}} Detalhes"></po-toolbar>
+  <po-toolbar p-title="{{ hero.name | uppercase }} Detalhes"></po-toolbar>
 
   <div class="po-md-12">
-    <h3> ID: {{hero.id}} </h3>
+    <h3>ID: {{ hero.id }}</h3>
     <h3>Nome:</h3>
-    <po-input class="po-md-4" [(ngModel)]="hero.name" p-placeholder="nome"></po-input>
+    <po-input
+      #heroName
+      class="po-md-4"
+      [(ngModel)]="hero.name"
+      p-placeholder="nome"
+    ></po-input>
   </div>
-  
+
   <div class="po-md-12">
-    <po-button-group class="po-md-8" [p-buttons]="buttons">
-    </po-button-group>
+    <po-button-group class="po-md-8" [p-buttons]="buttons"> </po-button-group>
   </div>
+  <po-modal
+    #modal
+    p-title="Herói adicionado!"
+    p-click-out="true"
+    p-size="sm"
+    p-hide-close="true"
+  >
+    <h3>
+      O nome do herói foi alterado de <b>Nome Antigo</b> para <b>{{heroName.getScreenValue()}}</b>
+    </h3>
+  </po-modal>
 </po-page-default>

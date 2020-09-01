@@ -45,9 +45,8 @@ export class HeroesComponent implements OnInit {
   }
 
   details(hero: Hero): void {
-    var b = `${hero.id}`
-    var a = this.rota.navigateByUrl('/detail/' + b)
-    console.log('url: ' + a)
-    console.log('id= ' + b)
+    var id = `${hero.id}`
+    this.rota.navigateByUrl('/detail/' + id)
+    console.log('id= ' + id)
   }
 }

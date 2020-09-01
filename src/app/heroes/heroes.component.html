@@ -1,24 +1,17 @@
 <po-page-default>
-  <!--
-  <ul class="heroes">
-    <li *ngFor="let hero of heroes">
-      <a routerLink="/detail/{{hero.id}}">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
-      </a>
-      <po-button p-label="x" class="delete" title="delete hero" (click)="delete(hero)"></po-button>
-    </li>
-  </ul> -->
-  <po-table #hero p-title="Heróis" p-max-columns="3" p-height="350" [p-items]="heroes" [p-actions]="actions" [p-striped]
+  <po-table #hero p-title='Heróis' p-max-columns="3" p-height="350" [p-items]="heroes" [p-actions]="actions" [p-striped]
     class="po-md-12 po-sm-12 po-lg-12" p-container>
   </po-table>
   <div class="po-row">
     <div class="po-m-2"></div>
   </div>
-  <div>
-    <h4>Adicione um novo:
-      <po-input #heroName></po-input>
-    </h4>
-    <po-button (click)="add(heroName.getScreenValue()); heroName.clear(); " p-label="Adicionar" p-type="primary">
+  <div class="po-md-6">
+    <label for="heroName"><h4> Adicione um novo: </h4></label>
+    <po-input p-clean="true" #heroName></po-input>
+    <po-button (click)="add(heroName.getScreenValue()); modal.open();" p-label="Adicionar" p-type="primary">
     </po-button>
   </div>
+  <po-modal #modal p-title='Herói adicionado!' p-click-out="true" p-size="sm" p-hide-close="true">
+    <h3>O herói <b>{{heroName.getScreenValue()}}</b> foi inserido na lista!</h3>
+  </po-modal>
 </po-page-default>
