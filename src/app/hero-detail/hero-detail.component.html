@@ -6,6 +6,7 @@
     <h3>Nome:</h3>
     <po-input
       #heroName
+      id="heroName"
       class="po-md-4"
       [(ngModel)]="hero.name"
       p-placeholder="nome"
@@ -23,7 +24,7 @@
     p-hide-close="true"
   >
     <h3>
-      O nome do herói foi alterado de <b>Nome Antigo</b> para <b>{{heroName.getScreenValue()}}</b>
+      O nome do herói foi alterado de <b>{{oldName}}</b> para <b>{{heroName.getScreenValue()}}</b>
     </h3>
   </po-modal>
 </po-page-default>

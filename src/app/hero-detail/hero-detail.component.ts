@@ -4,22 +4,24 @@ import { Location } from '@angular/common';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
-import { PoButtonGroupItem, PoModalComponent } from '@po-ui/ng-components';
+import { PoButtonGroupItem, PoModalComponent, PoInputComponent } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
-  styleUrls: [ './hero-detail.component.css' ]
+  styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
   hero: Hero;
-  oldName: any;
+  oldName: string;
+
+  @ViewChild('heroName', { static: true }) input: PoInputComponent;
 
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location,
-  ) {}
+  ) { }
 
   buttons: Array<PoButtonGroupItem> = [
     { action: this.goBack.bind(this), label: 'Voltar' },
@@ -28,18 +30,18 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHero();
-    console.log(this.oldName);
   }
 
   getHero() {
     const id = +this.route.snapshot.paramMap.get('id');
-    var a = this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
-
-    console.log(this.oldName = a);
+    this.heroService.getHero(id)
+      .subscribe(hero => {
+        this.hero = hero,
+        this.oldName = hero.name
+      });
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
   }
 

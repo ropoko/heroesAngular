@@ -1,17 +1,32 @@
 <hr />
 <po-page-list class="po-md-11">
     <div class="po-row">
-        <h4> <label for="search-box">Pesquisar heróis:</label> </h4>
+        <h4> <label for="searchBox">Pesquisar heróis:</label> </h4>
         <!-- <po-input #searchBox class="po-md-6" (input)="search(searchBox.getScreenValue())"></po-input> -->
         <input #searchBox id="searchBox" class="po-md-6" (input)="search(searchBox.value)" />
     </div>
-    <po-list-view class="search-result po-offset-lg-3 po-offset-md-3 po-md-6 po-lg-6" *ngFor="let hero of heroes$ | async"
+
+    <div class="po-m-2"></div>
+
+    <po-button id="search-result" class="po-md-4" *ngFor="let hero of heroes$ | async" p-label="{{hero.name}}"
+    routerLink='/detail/{{hero.id}}' p-type="primary">
+
+    </po-button>
+
+    <!-- <po-list-view id="search-result" class="po-sm-6 po-md-6 po-lg-6" *ngFor="let hero of heroes$ | async"
     [p-items]=" [{ title:hero.name, name: hero.name, label: hero.name, routerLink:'/detail/hero.id' }]">
         <ng-template p-list-view-content-template let-item>
+            <po-button #heroButton id="heroButton" class="po-md-4" routerLink="/detail/{{hero.id}}" p-type="primary" p-label="{{item.name}}">
+            </po-button>
+        </ng-template>
+    </po-list-view> -->
+
+
+        <!-- <ng-template p-list-view-content-template let-item>
             <div>
-                <po-button class="po-md-3" routerLink="/detail/{{hero.id}}" p-type="primary" p-label="{{item.name}}">
+                <po-button #heroButton id="heroButton" class="po-md-4" routerLink="/detail/{{hero.id}}" p-type="primary" p-label="{{item.name}}">
                 </po-button>
             </div>
-        </ng-template>
-    </po-list-view>
+        </ng-template> -->
+    
 </po-page-list>
