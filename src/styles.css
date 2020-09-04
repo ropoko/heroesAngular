@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    /* items menu */
+    --color-menu-color-menu-item-text: #00ADBA;
+    --color-menu-color-menu-item-selected: #00ADBA;
+    --color-menu-color-menu-responsive: #00ADBA;
+    --color-menu-color-menu-collapse-icon: #00ADBA;
+    /* buttons */
+    --color-button-background-color-primary: #00A5C3;
+    --color-button-border-primary: #00A5C3;
+    --color-button-background-color-primary-hover: #00c5e7;
+    --color-button-border-primary-hover: #00c5e7;
+    /* table */
+    --color-table-background-color-scrollbar: #00AEBA;
+    --color-table-color-text: black;
+    --color-table-color-header: #14bbc7;
+}

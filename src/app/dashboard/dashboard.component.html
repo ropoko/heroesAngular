@@ -4,7 +4,7 @@
     <hr />
 
     <div class="po-row">
-      <po-button *ngFor="let hero of heroes" class="po-md-3" p-label="{{ hero.name }}" routerLink="/detail/{{hero.id}}">
+      <po-button *ngFor="let hero of heroes" class="po-md-3" p-label="{{ hero.name }}" p-type="primary" routerLink="/detail/{{hero.id}}">
       </po-button>
     </div>
   </div>
